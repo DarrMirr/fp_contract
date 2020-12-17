@@ -11,9 +11,9 @@ import static com.github.darrmirr.fp.contract.utility.Define.def;
 public interface Main3 {
 
     static void main(String[] args) {
-        var square = def((Integer x) -> x != null ? x * x : -1);
+        var cubeVolume = def((Integer x) -> x != null ? x * x * x: -1);
         Integer x = null;
-        var result = square.apply(x);
-        System.out.println("square result : " + result);
+        var result = cubeVolume.apply(x);
+        System.out.println("result : " + result);
     }
 }

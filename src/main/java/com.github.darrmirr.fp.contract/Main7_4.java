@@ -1,19 +1,19 @@
 package com.github.darrmirr.fp.contract;
 
-import com.github.darrmirr.fp.contract.utility.Contract2;
+import com.github.darrmirr.fp.contract.utility.Contract3;
 
 import static com.github.darrmirr.fp.contract.utility.Define.def;
 
 /**
- * Example 7_3:
+ * Example 7_4:
  *
- *   Contract2 extend Predicate interface in order to remove method's obligate argument with Predicate type
+ *   Unit method "of()" is added to Contract3 in order to make contract creation more expressive
  */
-public interface Main7_3 {
+public interface Main7_4 {
 
     static void main(String[] args) {
         var cubeVolume = def((Integer x) -> x * x * x);
-        Contract2 isPositiveNumber = (Integer value) -> value > 0;
+        var isPositiveNumber = Contract3.of((Integer value) -> value > 0);
 
         Integer x = null;
         var result = isPositiveNumber

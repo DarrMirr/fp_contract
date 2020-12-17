@@ -14,19 +14,19 @@ import static com.github.darrmirr.fp.contract.utility.Define.def;
 public interface Main7 {
 
     static void main(String[] args) {
-        var square = def((Integer x) -> x * x);
-        var isIntPredicate = def((Integer value) -> value != null);
+        var cubeVolume = def((Integer x) -> x * x * x);
+        // the same as Predicate<Integer> isPositiveNumber = (Integer value) -> value > 0;
+        var isPositiveNumber = def((Integer value) -> value > 0);
 
         Integer x = null;
-        var result = obligate(square, isIntPredicate)
-                .apply(x);
+        var result = getResult(cubeVolume, isPositiveNumber, x);
         System.out.println("result : " + result);
     }
 
-    static Function<Integer, Optional<Integer>> obligate(Function<Integer, Integer> function, Predicate<Integer> predicate) {
-        return value -> Optional
-                .ofNullable(value)
-                .filter(predicate)
-                .map(function);
+    static Optional<Integer> getResult(Function<Integer, Integer> cubeVolume, Predicate<Integer> isPositiveNumber, Integer x) {
+        return Optional
+                .ofNullable(x)
+                .filter(isPositiveNumber)
+                .map(cubeVolume);
     }
 }

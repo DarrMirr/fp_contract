@@ -5,8 +5,9 @@ import java.util.function.Function;
 import java.util.function.Predicate;
 
 /**
- * Version of Contract interface for example 7_2
+ * Version of Contract interface for example 7_4
  */
+@FunctionalInterface
 public interface Contract3 extends Predicate<Integer> {
 
     /**

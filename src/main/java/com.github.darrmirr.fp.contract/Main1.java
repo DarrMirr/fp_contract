@@ -10,10 +10,10 @@ import static com.github.darrmirr.fp.contract.utility.Define.def;
 public interface Main1 {
 
     static void main(String[] args) {
-        // the same as Function<Integer, Integer> square = (Integer x) -> x * x;
-        var square = def((Integer x) -> x * x);
+        // the same as Function<Integer, Integer> cubeVolume = (Integer x) -> x * x * x;
+        var cubeVolume = def((Integer x) -> x * x * x);
         Integer x = null;
-        var result = square.apply(x);
-        System.out.println("square result : " + result);
+        var result = cubeVolume.apply(x);
+        System.out.println("result : " + result);
     }
 }

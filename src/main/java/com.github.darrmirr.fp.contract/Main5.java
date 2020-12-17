@@ -12,12 +12,12 @@ import static com.github.darrmirr.fp.contract.utility.Define.def;
 public interface Main5 {
 
     static void main(String[] args) {
-        var square = def((Integer x) -> x * x);
+        var cubeVolume = def((Integer x) -> x * x * x);
         Integer x = null;
         var result = Optional
                 .ofNullable(x)
-                .filter(value -> value != null)
-                .map(square);
-        System.out.println("square result : " + result);
+                .filter(value -> value > 0)
+                .map(cubeVolume);
+        System.out.println("result : " + result);
     }
 }

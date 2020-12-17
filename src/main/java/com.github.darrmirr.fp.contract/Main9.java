@@ -12,21 +12,22 @@ import static com.github.darrmirr.fp.contract.utility.Define.def;
 public interface Main9 {
 
     static void main(String[] args) {
-        var square = def((Integer x) -> x * x);
-        var squareProtected = Contract
+        var cubeVolume = def((Integer x) -> x * x * x);
+        var cubeVolumeProtected = Contract
                 .of((Integer value) -> value != null)
-                .obligate(square);
+                .and(number -> number > 0)
+                .obligate(cubeVolume);
 
         Integer x = null;
 
         try {
-            var result = square.apply(x);
-            System.out.println("square result : " + result);
+            var result = cubeVolume.apply(x);
+            System.out.println("cubeVolume result : " + result);
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println("cubeVolune failed due to x = " + x);
         }
 
-        var result = squareProtected.apply(x);
-        System.out.println("square protected result : " + result);
+        var result = cubeVolumeProtected.apply(x);
+        System.out.println("cubeVolume protected result : " + result);
     }
 }

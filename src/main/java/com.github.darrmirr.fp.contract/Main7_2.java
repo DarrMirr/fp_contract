@@ -1,23 +1,22 @@
 package com.github.darrmirr.fp.contract;
 
-import com.github.darrmirr.fp.contract.utility.Contract2;
+import com.github.darrmirr.fp.contract.utility.Contract1;
 
 import static com.github.darrmirr.fp.contract.utility.Define.def;
 
 /**
- * Example 7_2:
+ * Example 7_1:
  *
- *   Contract2 extend Predicate interface in order to remove method argument with Predicate type
+ *   static method move to Contract1 class
  */
 public interface Main7_2 {
 
     static void main(String[] args) {
-        var square = def((Integer x) -> x * x);
-        Contract2 isIntPredicate = (Integer value) -> value != null;
+        var cubeVolume = def((Integer x) -> x * x * x);
+        var isPositiveNumber = def((Integer value) -> value > 0);
 
         Integer x = null;
-        var result = isIntPredicate
-                .obligate(square)
+        var result = Contract1.obligate(cubeVolume, isPositiveNumber)
                 .apply(x);
         System.out.println("result : " + result);
     }
