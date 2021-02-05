@@ -1,6 +1,7 @@
 package com.github.darrmirr.fp.contract.utility;
 
 import java.util.Optional;
+import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
 
@@ -67,5 +68,20 @@ public interface Contract<T> extends Predicate<T> {
                 .ofNullable(function)
                 .filter(func -> test(input))
                 .flatMap(func -> func.apply(input));
+    }
+
+    /**
+     * Obligate (Wrap) consumer function by contract
+     *
+     * NPE-free version
+     *
+     * @param consumer function to wrap
+     * @return function wrapped by contract
+     */
+    default Consumer<T> obligate(Consumer<? super T> consumer) {
+        return input -> Optional
+                .ofNullable(consumer)
+                .filter(func -> test(input))
+                .ifPresent(func -> func.accept(input));
     }
 }
